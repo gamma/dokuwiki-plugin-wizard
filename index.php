@@ -134,11 +134,10 @@ if(isset($_REQUEST['plugin_wiz_create'])) {
   <script rel="text/javascript" charset="utf-8" src="js/jquery.js" ></script>
   <script rel="text/javascript" charset="utf-8" src="js/script.js" ></script>
   <script type="text/javascript" src="js/plugins/autocomplete/lib/jquery.bgiframe.min.js"></script>
-  <script type="text/javascript" src="js/plugins/autocomplete/lib/jquery.dimensions.js"></script>
   <script type="text/javascript" src="js/plugins/autocomplete/jquery.autocomplete.js"></script>
 
   <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
-  <link rel="stylesheet" href="http://dev.jquery.com/view/trunk/plugins/autocomplete/jquery.autocomplete.css" type="text/css" />
+  <link rel="stylesheet" href="js/plugins/autocomplete/jquery.autocomplete.css" type="text/css" />
 </head>
 <body>
   <div id="container">
