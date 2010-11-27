@@ -28,6 +28,7 @@ div#container {
 
 div#container form {
   padding: 1em;
+  height: 1%; /* hasLayout for IE */
 }
 
 div#container div#plugin_info {
@@ -38,6 +39,7 @@ div#container div#plugin_info {
 div#container div#plugin_components {
   float: left;
   width: 59%;
+  vertical-align: top; /* fix vertical text alignment in IE */
 }
 
 

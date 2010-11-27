@@ -205,7 +205,7 @@ var plugin_wiz = {
         }
 
         return true;
-    },
+    }
 
 };
 
