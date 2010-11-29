@@ -17,13 +17,13 @@ require_once DOKU_PLUGIN.'admin.php';
 
 class @@PLUGIN_COMPONENT_NAME@@ extends DokuWiki_Admin_Plugin {
 
-    function getMenuSort() { return FIXME; }
-    function forAdminOnly() { return false; }
+    public function getMenuSort() { return FIXME; }
+    public function forAdminOnly() { return false; }
 
-    function handle() {
+    public function handle() {
     }
 
-    function html() {
+    public function html() {
         ptln('<h1>' . $this->getLang('menu') . '</h1>');
     }
 }

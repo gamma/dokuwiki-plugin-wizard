@@ -18,7 +18,7 @@ class @@PLUGIN_COMPONENT_NAME@@ extends Doku_Renderer {
     /**
      * The format this renderer produces
      */
-    function getFormat(){
+    public function getFormat(){
         return '@@PLUGIN_NAME@@';
     }
 

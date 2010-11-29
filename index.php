@@ -30,7 +30,8 @@ function create_bundle($conf) {
                         foreach($events as $event) {
                             if($event) {
                                 $register .= "\n" . '       $controller->register_hook(\'' . $event . '\', \'FIXME\', $this, \'handle_' . strtolower($event) . '\');';
-                                $handler  .= '    function handle_' . strtolower($event) . '(&$event, $param) { }' . "\n";
+                                $handler  .= "\n" . '    public function handle_' . strtolower($event) . '(&$event, $param) {'. "\n"
+                                                  . '    }' . "\n";
                             }
                         }
                         $search_replace['@@REGISTER@@'] = $register . "\n   ";

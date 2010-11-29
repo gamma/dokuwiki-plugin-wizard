@@ -16,35 +16,35 @@ if (!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once DOKU_PLUGIN.'syntax.php';
 
 class @@PLUGIN_COMPONENT_NAME@@ extends DokuWiki_Syntax_Plugin {
-    function getType() {
+    public function getType() {
         return 'FIXME: container|baseonly|formatting|substition|protected|disabled|paragraphs';
     }
 
-    function getPType() {
+    public function getPType() {
         return 'FIXME: normal|block|stack';
     }
 
-    function getSort() {
+    public function getSort() {
         return FIXME;
     }
 
 
-    function connectTo($mode) {
+    public function connectTo($mode) {
         $this->Lexer->addSpecialPattern('<FIXME>',$mode,'@@SYNTAX_COMPONENT_NAME@@');
 //        $this->Lexer->addEntryPattern('<FIXME>',$mode,'@@SYNTAX_COMPONENT_NAME@@');
     }
 
-//    function postConnect() {
+//    public function postConnect() {
 //        $this->Lexer->addExitPattern('</FIXME>','@@SYNTAX_COMPONENT_NAME@@');
 //    }
 
-    function handle($match, $state, $pos, &$handler){
+    public function handle($match, $state, $pos, &$handler){
         $data = array();
 
         return $data;
     }
 
-    function render($mode, &$renderer, $data) {
+    public function render($mode, &$renderer, $data) {
         if($mode != 'xhtml') return false;
 
         return true;

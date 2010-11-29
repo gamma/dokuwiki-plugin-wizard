@@ -18,7 +18,7 @@ class @@PLUGIN_COMPONENT_NAME@@ extends Doku_Renderer_xhtml {
     /**
      * Make available as XHTML replacement renderer
      */
-    function canRender($format){
+    public function canRender($format){
         if($format == 'xhtml') return true;
         return false;
     }
