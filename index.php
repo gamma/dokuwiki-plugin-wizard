@@ -73,6 +73,13 @@ function create_bundle($conf) {
     $bundle[] = array('path' => 'plugin.info.txt',
                       'skel' => $skel);
 
+    // README
+    $skel = file_get_contents('./skel/README.skel');
+    $skel = str_replace(array_keys($search_replace),
+                        array_values($search_replace), $skel);
+    $bundle[] = array('path' => 'README',
+                      'skel' => $skel);
+
     // configuration
     if($conf['use_config']){
         $skel = file_get_contents('./skel/conf/default.skel');
