@@ -200,6 +200,7 @@ var plugin_wiz = {
             case 'helper':
             case 'admin':
             case 'remote':
+            case 'auth':
                 var input_name  = 'plugin[components][' + plugin_type + '][' + plugin_name + ']';
                 div.append('<input type="hidden" value="" name="' + input_name + '" />');
                 break;
