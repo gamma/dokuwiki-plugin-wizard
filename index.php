@@ -225,6 +225,7 @@ if(isset($_REQUEST['plugin_wiz_create'])) {
           <option value="helper">helper</option>
           <option value="renderer">renderer</option>
           <option value="admin">admin</option>
+          <option value="remote">remote</option>
         </select>
         <input type="button" name="ajax__btn_add_plugin_component" id="ajax__btn_add_plugin_component" value="add" />
 
