@@ -158,7 +158,7 @@ if(isset($_REQUEST['plugin_wiz_create'])) {
     </noscript>
 
     <div class="intro">
-        <p>This wizard generates a <a href="http://www.dokuwiki.org/devel:plugins">DokuWiki plugin</a>
+        <p>This wizard generates a <a href="https://www.dokuwiki.org/devel:plugins">DokuWiki plugin</a>
            skeleton to help get started with coding.
            Before using it you should familiarize your self with how plugins in DokuWiki work
            and determine what components your plugin will need.</p>
@@ -174,28 +174,28 @@ if(isset($_REQUEST['plugin_wiz_create'])) {
       <div id="plugin_info">
         <h2>Plugin Information</h2>
 
-        <label for="plugin[name]" class="block">Plugin Name:</label>
+        <label for="ajax__plugin_name" class="block">Plugin Name:</label>
         <input type="text" name="plugin[name]" value="" class="edit" id="ajax__plugin_name"/>
         <br />
 
-        <label for="plugin[author][name]" class="block">Your Name:</label>
-        <input type="text" name="plugin[author][name]" value="" class="edit validate_string"></label>
+        <label for="plugin_author_name" class="block">Your Name:</label>
+        <input type="text" name="plugin[author][name]" value="" class="edit validate_string" id="plugin_author_name">
         <br />
 
-        <label for="plugin[author][mail]" class="block">E-Mail:</label>
-        <input type="text" name="plugin[author][mail]" value="" class="edit validate_string"></label>
+        <label for="plugin_author_mail" class="block">E-Mail:</label>
+        <input type="text" name="plugin[author][mail]" value="" class="edit validate_string" id="plugin_author_mail">
         <br />
 
-        <label for="plugin[desc]" class="block">Plugin Description:</label>
-        <input type="text" name="plugin[desc]" value="" class="edit validate_string" />
+        <label for="plugin_desc" class="block">Plugin Description:</label>
+        <input type="text" name="plugin[desc]" value="" class="edit validate_string" id="plugin_desc" />
         <br />
 
-        <label for="plugin[url]" class="block">URL:</label>
-        <input type="text" name="plugin[url]" value="" class="edit validate_url" />
+        <label for="plugin_url" class="block">URL:</label>
+        <input type="text" name="plugin[url]" value="" class="edit validate_url" id="plugin_url" />
         <br />
 
-        <label for="plugin[date]" class="block">Date:</label>
-        <input type="text" name="plugin[date]" value="<?php echo strftime('%Y-%m-%d', time())?>" class="edit validate_date" />
+        <label for="plugin_date" class="block">Date:</label>
+        <input type="text" name="plugin[date]" value="<?php echo strftime('%Y-%m-%d', time())?>" class="edit validate_date" id="plugin_date"/>
         <br />
 
       <label for="ajax__has_lang" class="block">Use Localization:</label>
@@ -215,8 +215,8 @@ if(isset($_REQUEST['plugin_wiz_create'])) {
 
         <label for="ajax__is_plugin_component" class="inline">Component:</label>
         <input type="checkbox" name="ajax__is_plugin_component" id="ajax__is_plugin_component" />
-        <label for="ajax__plugin_component_name" class="ajax__plugin_component_name inline">Component Name:</label>
-        <input type="text" name="ajax__plugin_component_name" class="ajax__plugin_component_name" value="" />
+        <label for="plugin_component_name" class="ajax__plugin_component_name inline">Component Name:</label>
+        <input type="text" name="ajax__plugin_component_name" class="ajax__plugin_component_name" value=""  id="plugin_component_name"/>
 
         <label for="ajax__plugin_component_type" class="inline">Type:</label>
         <select name="ajax__plugin_component_type" id="ajax__plugin_component_type">
