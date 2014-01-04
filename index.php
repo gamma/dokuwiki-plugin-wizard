@@ -136,6 +136,29 @@ function create_bundle($conf) {
         );
     }
 
+    // unit tests
+    if(!empty($conf['use_tests'])) {
+        $skel     = file_get_contents('./skel/_test/general.test.skel');
+        $skel     = str_replace(
+            array_keys($search_replace),
+            array_values($search_replace), $skel
+        );
+        $bundle[] = array(
+            'path' => '_test/general.test.php',
+            'skel' => $skel
+        );
+
+        $skel     = file_get_contents('./skel/travis.skel');
+        $skel     = str_replace(
+            array_keys($search_replace),
+            array_values($search_replace), $skel
+        );
+        $bundle[] = array(
+            'path' => '.travis.yml',
+            'skel' => $skel
+        );
+    }
+
     // create zip file
     $zipfile = tempnam('/tmp/', 'dwplugwiz').'.zip';
     $zip     = new ZipArchive();
@@ -229,16 +252,15 @@ if(isset($_REQUEST['plugin_wiz_create'])) {
 
             <label for="ajax__has_lang" class="block">Use Localization:</label>
             <input type="checkbox" name="plugin[use_lang]" id="ajax__has_lang" value="1"/>
-
-            <div id="ajax__plugin_lang"></div>
             <br/>
 
             <label for="ajax__has_config" class="block">Use Configuration:</label>
             <input type="checkbox" name="plugin[use_config]" id="ajax__has_config" value="1"/>
-
-            <div id="ajax__plugin_config"></div>
             <br/>
 
+            <label for="ajax__has_tests" class="block">Use Unit Tests:</label>
+            <input type="checkbox" name="plugin[use_tests]" id="ajax__has_tests" value="1"/>
+            <br/>
         </div>
 
         <div id="plugin_components">
