@@ -51,7 +51,7 @@ function create_bundle($conf) {
             $search_replace['@@INFO_TXT_PATH@@']         = ($name) ? '/../plugin.info.txt' : '/plugin.info.txt';
 
             // use special skeleton for xhtml renderer
-            if($data['inherits'] == 'Doku_Renderer_xhtml') {
+            if(isset($data['inherits']) && $data['inherits'] == 'Doku_Renderer_xhtml') {
                 $skel = 'renderer_xhtml';
             } else {
                 $skel = $type;
@@ -89,7 +89,7 @@ function create_bundle($conf) {
     );
 
     // configuration
-    if($conf['use_config']) {
+    if(!empty($conf['use_config'])) {
         $skel     = file_get_contents('./skel/conf/default.skel');
         $skel     = str_replace(
             array_keys($search_replace),
@@ -124,7 +124,7 @@ function create_bundle($conf) {
     }
 
     // localization
-    if($conf['use_lang']) {
+    if(!empty($conf['use_lang'])) {
         $skel     = file_get_contents('./skel/lang/lang.skel');
         $skel     = str_replace(
             array_keys($search_replace),
