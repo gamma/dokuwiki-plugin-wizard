@@ -29,7 +29,7 @@ class @@PLUGIN_COMPONENT_NAME@@ extends DokuWiki_Remote_Plugin {
     /**
      * Example function
      */
-    function myExample($id) {
+    public function myExample($id) {
         // FIXME handle security in your method!
         $id = cleanID($id);
         if(auth_quickaclcheck($id) < AUTH_READ){
