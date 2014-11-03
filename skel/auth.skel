@@ -99,8 +99,9 @@ class @@PLUGIN_COMPONENT_NAME@@ extends DokuWiki_Auth_Plugin {
      *
      * @param   string $user the user name
      * @return  array containing user data or false
+     * @param   bool $requireGroups whether or not the returned data must include groups
      */
-    public function getUserData($user) {
+    public function getUserData($user, $requireGroups=true) {
         // FIXME implement
         return false;
     }
@@ -161,11 +162,11 @@ class @@PLUGIN_COMPONENT_NAME@@ extends DokuWiki_Auth_Plugin {
      * Set getUsers capability when implemented
      *
      * @param   int   $start     index of first user to be returned
-     * @param   int   $limit     max number of users to be returned
+     * @param   int   $limit     max number of users to be returned, 0 for unlimited
      * @param   array $filter    array of field/pattern pairs, null for no filter
      * @return  array list of userinfo (refer getUserData for internal userinfo details)
      */
-    //public function retrieveUsers($start = 0, $limit = -1, $filter = null) {
+    //public function retrieveUsers($start = 0, $limit = 0, $filter = null) {
         // FIXME implement
     //    return array();
     //}
