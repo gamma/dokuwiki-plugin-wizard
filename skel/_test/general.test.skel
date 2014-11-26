@@ -45,7 +45,8 @@ class general_plugin_@@PLUGIN_NAME@@_test extends DokuWikiTest {
             foreach ($default_file as $line) {
                 $line = trim($line);
                 if (substr($line,0,5) == '$conf'){
-                    $key_end = strpos($line,'\'',7);
+                    $limit_char = substr($line,5,1);
+                    $key_end = strpos($line,$limit_char,7);
                     $conf_keys[] = substr($line,7,$key_end-7);
                 }
             }
@@ -58,7 +59,8 @@ class general_plugin_@@PLUGIN_NAME@@_test extends DokuWikiTest {
             foreach ($meta_file as $line) {
                 $line = trim($line);
                 if (substr($line,0,5) == '$meta'){
-                    $key_end = strpos($line,'\'',7);
+                    $limit_char = substr($line,5,1);
+                    $key_end = strpos($line,$limit_char,7);
                     $meta_keys[] = substr($line,7,$key_end-7);
                 }
             }
