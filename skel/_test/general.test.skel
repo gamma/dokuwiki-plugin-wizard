@@ -30,4 +30,47 @@ class general_plugin_@@PLUGIN_NAME@@_test extends DokuWikiTest {
         $this->assertRegExp('/^\d\d\d\d-\d\d-\d\d$/', $info['date']);
         $this->assertTrue(false !== strtotime($info['date']));
     }
+
+    /**
+     * Test to ensure that every conf['...'] entry in conf/default.php has a corresponding meta['...'] entry in
+     * metadata.php.
+     */
+    public function test_plugin_conf() {
+        $default_file = __DIR__.'/../conf/default.php';
+        $meta_file    = __DIR__.'/../conf/metadata.php';
+
+        $conf_keys = array();
+        if (file_exists($default_file)) {
+            $default_file = file($default_file);
+            foreach ($default_file as $line) {
+                $line = trim($line);
+                if (substr($line,0,5) == '$conf'){
+                    $key_end = strpos($line,'\'',7);
+                    $conf_keys[] = substr($line,7,$key_end-7);
+                }
+            }
+        }
+
+
+        $meta_keys = array();
+        if (file_exists($meta_file)) {
+            $meta_file = file($meta_file);
+            foreach ($meta_file as $line) {
+                $line = trim($line);
+                if (substr($line,0,5) == '$meta'){
+                    $key_end = strpos($line,'\'',7);
+                    $meta_keys[] = substr($line,7,$key_end-7);
+                }
+            }
+        }
+
+        foreach ($conf_keys as $key) {
+            $this->assertTrue(in_array($key, $meta_keys,true),'Key $meta[\'' . $key . '\'] missing in ' . DOKU_PLUGIN .'@@PLUGIN_NAME@@/conf/metadata.php');
+        }
+
+        foreach ($meta_keys as $key) {
+            $this->assertTrue(in_array($key, $conf_keys,true),'Key $conf[\'' . $key . '\'] missing in ' . DOKU_PLUGIN .'@@PLUGIN_NAME@@/conf/default.php');
+        }
+
+    }
 }
