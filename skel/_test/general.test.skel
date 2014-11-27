@@ -33,45 +33,18 @@ class general_plugin_@@PLUGIN_NAME@@_test extends DokuWikiTest {
 
     /**
      * Test to ensure that every conf['...'] entry in conf/default.php has a corresponding meta['...'] entry in
-     * metadata.php.
+     * conf/metadata.php.
      */
     public function test_plugin_conf() {
-        $default_file = __DIR__.'/../conf/default.php';
-        $meta_file    = __DIR__.'/../conf/metadata.php';
+        include(__DIR__.'/../conf/default.php');
+        include(__DIR__.'/../conf/metadata.php');
 
-        $conf_keys = array();
-        if (file_exists($default_file)) {
-            $default_file = file($default_file);
-            foreach ($default_file as $line) {
-                $line = trim($line);
-                if (substr($line,0,5) == '$conf'){
-                    $limit_char = substr($line,5,1);
-                    $key_end = strpos($line,$limit_char,7);
-                    $conf_keys[] = substr($line,7,$key_end-7);
-                }
-            }
+        foreach ($conf as $key => $value) {
+            $this->assertTrue(array_key_exists($key, $meta),'Key $meta[\'' . $key . '\'] missing in ' . DOKU_PLUGIN .'@@PLUGIN_NAME@@/conf/metadata.php');
         }
 
-
-        $meta_keys = array();
-        if (file_exists($meta_file)) {
-            $meta_file = file($meta_file);
-            foreach ($meta_file as $line) {
-                $line = trim($line);
-                if (substr($line,0,5) == '$meta'){
-                    $limit_char = substr($line,5,1);
-                    $key_end = strpos($line,$limit_char,7);
-                    $meta_keys[] = substr($line,7,$key_end-7);
-                }
-            }
-        }
-
-        foreach ($conf_keys as $key) {
-            $this->assertTrue(in_array($key, $meta_keys,true),'Key $meta[\'' . $key . '\'] missing in ' . DOKU_PLUGIN .'@@PLUGIN_NAME@@/conf/metadata.php');
-        }
-
-        foreach ($meta_keys as $key) {
-            $this->assertTrue(in_array($key, $conf_keys,true),'Key $conf[\'' . $key . '\'] missing in ' . DOKU_PLUGIN .'@@PLUGIN_NAME@@/conf/default.php');
+        foreach ($meta as $key => $value) {
+            $this->assertTrue(array_key_exists($key, $conf),'Key $conf[\'' . $key . '\'] missing in ' . DOKU_PLUGIN .'@@PLUGIN_NAME@@/conf/default.php');
         }
 
     }
